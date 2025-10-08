@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+    <head>
+        <title>LOGIN</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h1>Login</h1>
+        <h:form>
+            <label>Username:</label>
+            <h:inputText value="#{authBean.username}"></h:inputText>
+            
+            <label>Password:</label>
+            <h:inputSecret value="#{authBean.password}"></h:inputSecret>
+            
+            <h:commandButton value="Send" action="#{authBean.login}"></h:commandButton>
+        </h:form>
+    </body>
+</html>
