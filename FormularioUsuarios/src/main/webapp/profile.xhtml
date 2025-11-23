@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>My Profile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2" cellspacing="0.5rem">
+                <h:outputLabel for="username" value="Nombre de usuario"/>
+                <h:inputText id="username" value="#{profileBean.currentUser.usuario}"/>
+                
+                <h:outputLabel for="password" value="Contraseña"/>
+                <h:inputSecret id="password" value="#{profileBean.currentUser.contraseña}"/>
+                
+                <h:outputLabel for="name" value="Nombre"/>
+                <h:inputText id="name" value="#{profileBean.currentUser.nombre}"/>
+                
+                <h:outputLabel for="email" value="Email"/>
+                <h:inputText id="email" value="#{profileBean.currentUser.correo}"/>
+                
+                <h:outputLabel for="tel" value="Número de telefono"/>
+                <h:inputText id="tel" value="#{profileBean.currentUser.telefono}"/>
+                
+                <h:commandButton action="#{profileBean.guardarCambios()}" value="Confirmar"/>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
