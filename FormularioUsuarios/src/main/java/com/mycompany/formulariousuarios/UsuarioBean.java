@@ -38,6 +38,13 @@ public class UsuarioBean implements Serializable {
     public String registrar() {
         // Obtenemos el contexto de JSF para mostrar mensajes en pantalla
         FacesContext fc = FacesContext.getCurrentInstance();
+        
+        if(!aceptaTerminos){
+            FacesContext.getCurrentInstance().addMessage("Acepto", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Debes aceptar los términos y condiciones para registrate.",
+                    null)
+                    );
+            return null;
+        }
 
         // Validación extra en el servidor: se revisa que todos los campos tengan datos
         if (isVacio(usuario.getUsuario()) ||
@@ -101,5 +108,13 @@ public class UsuarioBean implements Serializable {
     // Revisa si una cadena esta vacía
     private boolean isVacio(String s) {
         return s == null || s.trim().isEmpty();
+    }    
+    private boolean aceptaTerminos;
+    public boolean isAceptaTerminos(){
+     return aceptaTerminos;   
+    } 
+    public void setAceptaTerminos(boolean aceptaTerminos){
+        this.aceptaTerminos = aceptaTerminos;
     }
+    
 }

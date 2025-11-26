@@ -10,7 +10,7 @@ public class JPAUtil {
     //Se conecta el programa con la BD
     //El nombre "Ejemplo" debe coincidir con el que está en persistence.xml
     private static final EntityManagerFactory emf =
-            Persistence.createEntityManagerFactory("supabase");
+            Persistence.createEntityManagerFactory("supa");
 
     //Método que sirve para escribir o leer en la BD
     private EntityManager getEntityManager() {
@@ -110,5 +110,14 @@ public class JPAUtil {
             em.close();
         }
     }
+    
+    
+
+    
+    
+    
+    
+        // --------------------------Espacio para nuevas versiones FAVOR DE NO CAMBIAR NADA ARRIBA ---------------------------------
+    
 }
 

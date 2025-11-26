@@ -9,6 +9,11 @@
 </h:head>
 <!-- Cuerpo de la página con estilos -->
 <h:body style="background:#ffd6e7; padding:30px; font-family:Arial;">
+    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <h:graphicImage library="img" name="logo3.jpg"
+                            style="height: 50px; margin-right: 10px;" />
+        </div>
+    
 
     <h:link value="Mi perfil" outcome="profile"/>
     
@@ -41,6 +46,12 @@
         </h:panelGrid>
 
         <br/>
+        
+        <h:selectBooleanCheckbox id="Acepto"
+                                         value="#{usuarioBean.aceptaTerminos}"/>
+                <h:outputLabel for="Acepto"
+                               value="Acepto términos y condiciones"/>
+        <br/><br/>
 
         <h:commandButton value="Guardar"
                          action="#{usuarioBean.registrar}"

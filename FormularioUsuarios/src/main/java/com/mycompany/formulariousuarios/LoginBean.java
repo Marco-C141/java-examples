@@ -29,7 +29,7 @@ public class LoginBean implements Serializable {
             
             session.put("loggedUserId", user.getId());
             
-            return "index?faces-redirect=true";
+            return "principal?faces-redirect=true";
         } else {
             // Error message
             FacesContext.getCurrentInstance().addMessage(null, 

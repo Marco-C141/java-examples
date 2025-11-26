@@ -10,8 +10,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <title>Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <h:body>
-        <h1>Iniciar sesion</h1>
+    <h:body style="background:#ffffff; padding: 30px; font-family: Arial;">
+        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <h:graphicImage library="img" name="logo3.jpg"
+                            style="height: 50px; margin-right: 10px;" />
+            <h1>Iniciar sesion</h1>
+        </div>    
+            
+        
         <h:form id="login">
             <h:messages globalOnly="true" style="color: red;"/>
             <h:panelGrid columns="2" cellpadding="5">
@@ -24,5 +30,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 <h:commandButton action="#{loginBean.login()}" value="Enviar"/>
             </h:panelGrid>
         </h:form>
+        <h:link value="Registrarse" outcome="index" />
     </h:body>
 </html>

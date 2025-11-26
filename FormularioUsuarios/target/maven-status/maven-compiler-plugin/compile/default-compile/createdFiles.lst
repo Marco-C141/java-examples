@@ -1,7 +1,7 @@
-com/mycompany/formulariousuarios/Usuario.class
-com/mycompany/formulariousuarios/resources/JakartaEE10Resource.class
-com/mycompany/formulariousuarios/LoginBean.class
-com/mycompany/formulariousuarios/JPAUtil.class
-com/mycompany/formulariousuarios/JakartaRestConfiguration.class
-com/mycompany/formulariousuarios/UsuarioBean.class
-com/mycompany/formulariousuarios/ProfileBean.class
+com\mycompany\formulariousuarios\resources\JakartaEE10Resource.class
+com\mycompany\formulariousuarios\ProfileBean.class
+com\mycompany\formulariousuarios\JPAUtil.class
+com\mycompany\formulariousuarios\LoginBean.class
+com\mycompany\formulariousuarios\UsuarioBean.class
+com\mycompany\formulariousuarios\JakartaRestConfiguration.class
+com\mycompany\formulariousuarios\Usuario.class

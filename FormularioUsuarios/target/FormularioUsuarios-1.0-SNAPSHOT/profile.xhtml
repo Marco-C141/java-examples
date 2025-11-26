@@ -7,7 +7,12 @@
         <title>My Profile</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <h:body>
+    <h:body style="background:#ffd6e7; padding:30px; font-family:Arial;">
+    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <h:graphicImage library="img" name="logo3.jpg"
+                            style="height: 50px; margin-right: 10px;" />
+        </div>
+        
         <h:form>
             <h:panelGrid columns="2" cellspacing="0.5rem">
                 <h:outputLabel for="username" value="Nombre de usuario"/>
@@ -26,7 +31,9 @@
                 <h:inputText id="tel" value="#{profileBean.currentUser.telefono}"/>
                 
                 <h:commandButton action="#{profileBean.guardarCambios()}" value="Confirmar"/>
+                
             </h:panelGrid>
+            
         </h:form>
     </h:body>
 </html>
