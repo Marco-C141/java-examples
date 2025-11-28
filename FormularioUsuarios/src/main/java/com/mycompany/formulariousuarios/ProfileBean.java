@@ -1,6 +1,6 @@
 package com.mycompany.formulariousuarios;
 
-import jakarta.faces.application.FacesMessage;
+import jakarta.annotation.PostConstruct;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
@@ -11,9 +11,13 @@ import java.util.Map;
 @ViewScoped
 public class ProfileBean implements Serializable{
     private Usuario currentUser;
+    private String password;
     private JPAUtil jpautil;
     
-    public ProfileBean() {
+    public ProfileBean() {}
+    
+    @PostConstruct
+    public void init() {
         jpautil = new JPAUtil();
         
         // Retrieve the id from the session context
@@ -35,15 +39,18 @@ public class ProfileBean implements Serializable{
     
     
     
-    public void guardarCambios() {
+    public String guardarCambios() {
         try {
-            jpautil.actualizar(this.currentUser);
+            if (password != null && !password.trim().isEmpty()) 
+                currentUser.setContraseña(password);
             
-             FacesContext.getCurrentInstance().addMessage(null, 
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Perfil actualizado",""));
+            jpautil.actualizar(currentUser);
+            
+            return "principal?faces-redirect=true";
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
     
     
@@ -63,6 +70,15 @@ public class ProfileBean implements Serializable{
     public void setJpautil(JPAUtil jpautil) {
         this.jpautil = jpautil;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     
     
     
