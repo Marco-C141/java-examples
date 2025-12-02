@@ -81,11 +81,41 @@
 
         <h3>Usuarios registrados:</h3>
 
-        <h:inputTextarea value="#{usuarioBean.textoUsuarios}"
+        <!-- <h:inputTextarea value="#{usuarioBean.textoUsuarios}"
                          cols="60"
                          rows="8"
                          readonly="true"
                          style="background:white;"/>
+        -->
+        
+        <h:dataTable value="#{usuarioBean.listaUsuarios}" var="u"
+             border="1"
+             cellpadding="6"
+             cellspacing="0"
+             style="border: 2px solid black; border-collapse: collapse;">
+
+            <h:column>
+                <f:facet name="header">Usuario</f:facet>
+                #{u.usuario}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Nombre</f:facet>
+                #{u.nombre}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Correo</f:facet>
+                #{u.correo}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Teléfono</f:facet>
+                #{u.telefono}
+            </h:column>
+
+        </h:dataTable>
+        
     </h:form>
 
 </h:body>

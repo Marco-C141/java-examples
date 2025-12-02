@@ -5,17 +5,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="jakarta.faces.facelets">
     <h:head>
         <title>Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <h:body style="background:#ffffff; padding: 30px; font-family: Arial;">
-        <div style="display: flex; align-items: center; margin-bottom: 20px;">
-            <h:graphicImage library="img" name="logo3.jpg"
-                            style="height: 50px; margin-right: 10px;" />
-            <h1>Iniciar sesion</h1>
-        </div>    
+   
+    <h:body style="background:#ffffff; padding: 30px; font-family: Arial;">        
+        <div id="header">
+            <ui:include src="header.xhtml"/>
+        </div>
             
         
         <h:form id="login">
@@ -29,7 +29,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
     
                 <h:commandButton action="#{loginBean.login()}" value="Enviar"/>
             </h:panelGrid>
+            <br/>
+            <!-- BOTON DE AYUDA -->
+            <h:commandButton value="Ayuda"
+                             action="#{loginBean.mostrarAyuda}"/>
+                        <!-- MENSAJE QUE APARECE EN LA MISMA PANTALLA -->
+            <h:panelGroup rendered="#{loginBean.mostrarMensajeAyuda}">
+                <br/><br/>
+                <h:outputText value="Para poder acceder necesitas registrarte,
+                              pero si ya tienes cuenta y olvidaste tu contraseña 
+                              puedes recuperarla haciendo 
+                              click en el ¿olvidaste tu contraseña?." />
+            <br/><br/>   
+            <h:link value="Registrarse" outcome="index" />
+            <br/>
+            <h:commandLink value="¿Olvidaste tu contraseña?"
+                       action="recuperar.xhtml?faces-redirect=true"
+                       immediate="true"/>
+                
+            </h:panelGroup>
+            <br/><br/>
+             
         </h:form>
-        <h:link value="Registrarse" outcome="index" />
+        
+        
+        
     </h:body>
 </html>

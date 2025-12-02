@@ -90,12 +90,20 @@ public class UsuarioBean implements Serializable {
     }
     
     // Cargar usuarios para el textarea
+    private List<Usuario> listaUsuarios;
+
+    public List<Usuario> getListaUsuarios() {
+        return listaUsuarios;
+    }
+    
+    // Cargar usuarios para el textarea
     public void cargarUsuarios() {
         JPAUtil jpa = new JPAUtil();
-        List<Usuario> lista = jpa.listarUsuarios(); // obtenemos todos los usuarios
+        listaUsuarios =jpa.listarUsuarios();
+        //List<Usuario> lista = jpa.listarUsuarios(); // obtenemos todos los usuarios
         StringBuilder sb = new StringBuilder();
         // Se arma un texto ordenado con los usuarios
-        for (Usuario u : lista) {
+        for (Usuario u : listaUsuarios) {
             sb.append("Usuario: ").append(u.getUsuario())
               .append(" | Nombre: ").append(u.getNombre())
               .append(" | Correo: ").append(u.getCorreo())

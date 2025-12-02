@@ -14,9 +14,13 @@ public class LoginBean implements Serializable {
     private String username;
     private String password;
     
+    //Abril
+    private Usuario usuarioLogueado;
+    
     private JPAUtil jpautil = new JPAUtil();
 
-    
+    private boolean mostrarMensajeAyuda = false;
+            
     public String login() {
         Usuario user = jpautil.buscarPorNombreUsuario(username);
         
@@ -29,6 +33,9 @@ public class LoginBean implements Serializable {
             
             session.put("loggedUserId", user.getId());
             
+            //Abril
+            usuarioLogueado=user;
+            
             return "principal?faces-redirect=true";
         } else {
             // Error message
@@ -39,6 +46,15 @@ public class LoginBean implements Serializable {
     }
     
     
+    // MÉTODO DE AYUDA
+    public void mostrarAyuda() {
+        mostrarMensajeAyuda = true;
+    }
+
+    // GETTER 
+    public boolean isMostrarMensajeAyuda() {
+        return mostrarMensajeAyuda;
+    }
     
     public String getUsername() {
         return username;
@@ -64,6 +80,16 @@ public class LoginBean implements Serializable {
         this.jpautil = jpautil;
     }
     
+    //Abril
+    // GETTER necesario para inicio.xhtml
+    public Usuario getUsuarioLogueado() {
+        return usuarioLogueado;
+    }
+
+    // SETTER necesario para evitar el error
+    public void setUsuarioLogueado(Usuario usuarioLogueado) {
+        this.usuarioLogueado = usuarioLogueado;
+    }
     
     
 }

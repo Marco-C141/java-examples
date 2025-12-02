@@ -10,12 +10,14 @@ public class JPAUtil {
     //Se conecta el programa con la BD
     //El nombre "Ejemplo" debe coincidir con el que está en persistence.xml
     private static final EntityManagerFactory emf =
-            Persistence.createEntityManagerFactory("supa");
+            Persistence.createEntityManagerFactory("cone");
 
     //Método que sirve para escribir o leer en la BD
     private EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+    
+    
 
     // Método para guardar usuarios en la BD
     public void guardar(Usuario usuario) {
@@ -118,6 +120,42 @@ public class JPAUtil {
     
     
         // --------------------------Espacio para nuevas versiones FAVOR DE NO CAMBIAR NADA ARRIBA ---------------------------------
+    
+    
+    // ---------------------------------------------------------
+    public boolean actualizarContrasena(String nombreUsuario, String nuevaContrasena) {
+        EntityManager em = getEntityManager();
+
+        try {
+            // 1. Buscar usuario por nombre (usuario)
+            Usuario u = em.createQuery(
+                    "SELECT u FROM Usuario u WHERE u.usuario = :usuario",
+                    Usuario.class)
+                    .setParameter("usuario", nombreUsuario)
+                    .getResultStream()
+                    .findFirst()
+                    .orElse(null);
+
+            // Si no existe, regresamos false
+            if (u == null) {
+                return false;
+            }
+
+            // 2. Actualizar contraseña
+            em.getTransaction().begin();
+            u.setContraseña(nuevaContrasena);
+            em.merge(u);
+            em.getTransaction().commit();
+
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            em.close();
+        }
+    }
     
 }
 

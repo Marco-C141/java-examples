@@ -2,12 +2,18 @@
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-            xmlns:h="http://xmlns.jcp.org/jsf/html">
+            xmlns:h="http://xmlns.jcp.org/jsf/html"
+            xmlns:ui="jakarta.faces.facelets">
     <h:head>
         <title>My Profile</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body style="background:#ffd6e7; padding:30px; font-family:Arial;">
+        
+        <div id="header">
+            <ui:include src="header.xhtml"/>
+        </div>
+        
     <div style="display: flex; align-items: center; margin-bottom: 20px;">
             <h:graphicImage library="img" name="logo3.jpg"
                             style="height: 50px; margin-right: 10px;" />

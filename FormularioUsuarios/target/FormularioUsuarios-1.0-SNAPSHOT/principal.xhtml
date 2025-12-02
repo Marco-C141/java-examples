@@ -2,12 +2,41 @@
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="jakarta.faces.facelets">
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <style>
+        .whatsapp-button {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+        }
+        .whatsapp-button:hover {
+            background-color: #1ebe5a;
+        }
+        </style>
+        
     </h:head>
     <h:body style="background:#ffffff; padding: 30px; font-family: Arial;">
+        
+         <div id="header">
+            <ui:include src="header.xhtml"/>
+        </div>
+        
         <div style="display: flex; align-items: center; margin-bottom: 20px;">
             <h:graphicImage library="img" name="logo3.jpg"
                             style="height: 70px; margin-right: 30px;" />
@@ -19,5 +48,31 @@
         <h:outputLabel value="Telefono: #{profileBean.currentUser.telefono}"/>
         <br/>
         <h:link value="Mi perfil" outcome="profile"/>
+        <br/><br/>
+        <h:outputLabel value="PEQUEÑA INTRODUCCION A JAVA (Tu optativa)"/>
+        <br/><br/>
+        <h:outputLabel value="¡Bienvenido al mundo de Java!
+        Java es un lenguaje de programación muy popular por su facilidad, 
+        seguridad y porque permite crear aplicaciones que funcionan en diferentes sistemas sin necesidad de cambiarlas. 
+        Java 3 fue una de las primeras versiones del lenguaje y ayudó a mejorar la estabilidad y 
+        el rendimiento de los programas, además de introducir bases importantes para las versiones modernas.
+        ¡Bienvenido a este viaje de aprendizaje en Java!"/>
+        <br/><br/>
+        <h:graphicImage library="img" name="ATS.jpg"
+                            style="height: 300px; margin-right: 30px;" />
+        
+        
+        <a 
+        class="whatsapp-button"
+        target="_blank"
+        href="#{
+            'https://wa.me/'
+            .concat(loginBean.usuarioLogueado.telefono)
+            .concat('?text=Hola :)')
+        }"
+        >
+        🟢
+        </a>
+        
     </h:body>
 </html>
